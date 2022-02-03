@@ -1,0 +1,25 @@
+#webzine .left_a{width:50%; float:left;}
+#webzine .right_a{width:50%; float:right;}
+#webzine .read_more{width: 150px;  padding: 10px 10px;  font-size:1em !important;  background: #ebebeb;  font-weight: 400 !important;  cursor: pointer;  text-align: center;  display: block; margin:30px auto; margin-bottom:0px; letter-spacing:0.2em; transition: 0.5s all ease; -webkit-transition: 0.5s all ease; -moz-transition: 0.5s all ease; -ms-transition: 0.5s all ease; -o-transition: 0.5s all ease;}
+#webzine .read_more:hover{background-color:#666; color:#fff;}
+#webzine_tit{border-top:1px solid #eee;  }
+
+@media all and (max-width:1050px){
+	#webzine .subject_txt{display:inline-block; text-overflow:ellipsis;white-space:nowrap;word-wrap:normal; overflow:hidden; width:100%; line-height:40px;}
+	#webzine .left_a{float:none; width:100%;}
+	#webzine .right_a{float:none; width:100%;}
+	#webzine .gall_text_href{padding-top:10px;}
+	#webzine .gall_date{display:inline-block !important;}
+	#webzine .bo_cnt{margin-top:10px;}
+}
+
+@media all and (max-width:768px){
+	#webzine .bo_cnt{width:95%;}
+	#webzine .gall_li{margin:20px 0;}
+	#webzine .subject_txt{font-size:0.9em;}
+	#webzine .gall_li .bo_cate_link{padding:0; border-bottom:0;}
+	#bo_v_title .bo_v_tit{margin:10px 0 !important;}
+	#bo_v_title .bo_v_tit span{font-size:1em !important;}
+	#bo_v_title{padding:0;}
+	#bo_v_con{padding-top:10px;}
+}

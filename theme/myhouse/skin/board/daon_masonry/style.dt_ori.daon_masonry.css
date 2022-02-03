@@ -1,0 +1,26 @@
+#pro_bnr_div{width:100%; max-width:100%; margin:0 auto 20px; }
+#pro_bnr{width:102.8%; margin-left:-1.1%;}
+#pro_bnr .pro_box{float:left; width:31%; margin:1.1%; }
+#pro_bnr .pro_box img{width:100%; border-radius:00px;}
+#pro_bnr .pro_box .pro_txt{display:block; position:absolute; bottom:0px; width:100%; height:35px; line-height:33px;   background:rgba(0,0,0,0.35); transition:all 0.4s ease 0s; text-align:center; color:#fff; border-bottom-left-radius:0px; border-bottom-right-radius:0px;}
+#pro_bnr .pro_box .pro_txt .pro_txt_cover{width:100%; height:35px; position:absolute; top:0; right:0; bottom:0; left:0; margin:auto;  text-align:center;}
+#pro_bnr .pro_box .pro_txt p{width:90%; margin:0 auto; color:#fff; line-height:35px; text-overflow:ellipsis; white-space:nowrap;word-wrap:normal;overflow:hidden;}
+#pro_bnr .pro_box .pro_txt p span{display:none;}
+#pro_bnr .pro_box:hover .pro_txt{top:0; bottom:auto; height:100%; border-radius:00px;}
+#pro_bnr .pro_box:hover .pro_txt .pro_txt_cover{height:92px;}
+#pro_bnr .pro_box:hover .pro_txt p{display:block; position:absolute; top:0; left:5%; width:90%;  line-height:1.5em; font-size:1.1em; color:#111; text-align:center;  transition:all 0.4s ease 0s; color:#fff;}
+#pro_bnr .pro_box:hover .pro_txt p span {display:block; font-size:0.95em; color:#111; line-height:1.5em; margin-top:10px; color:#fff;}
+
+
+@media all and (max-width:1200px){
+}
+
+@media all and (max-width:768px){
+	#pro_bnr .pro_box{float:left; width:47.5%; margin:1.1%; }
+}
+
+/*
+@media all and (max-width:480px){	
+	#pro_bnr .pro_box{float:left; width:98%; margin:1.1%; }
+}
+*/

@@ -1,0 +1,205 @@
+<?php
+	include "../include/header.php"; 
+?>
+
+<?php 
+	/*	
+		기본 css(11~15라인)
+		기본 css 는 적용하지 않습니다. 
+	*/ 
+?>
+<style>
+	body,td,h1,h2,h3,h4,h5,div,p,li,ul,ol,dd,dt,section,input,textarea,select,button{margin:0;padding:0; font-size:15px; color:#333; line-height:1.6em; font-family: 'Noto Sans KR', sans-serif; font-weight:400; letter-spacing:-0.02em;}
+	body{padding-top:50px; padding-bottom:50px;}
+	ul,ol,li{margin:0;padding:0;list-style:none;}	
+</style>
+
+
+<?php
+	/*
+		CSS파일 로드(25~26라인)
+		구매하신 다온테마에 사용하신다면 적용하지 않아도 됩니다.
+		다온테마가 아닌 다른 곳에 적용하신다면 24번 라인은 공통 상단파일 </head> 위에 적용합니다.	
+	*/
+?>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+<?php
+	/*
+		주의사항 
+		그누보드 관리자모드 내용관리등 에디터로 내용을 등록하실 경우, 보안문제로 자바스크립트와 css가 필터될 수 있습니다.
+		이럴 경우 공통 css 파일에 아래 style을 별도 추가하고, 내용관리 에디터의 HTML 모드로 태그를 넣으시면 됩니다.(에디터마다 HTML 모드 버튼이 있으니 HTML 모드로 넣어주세요.)
+		javascript 를 사용한다면 공통하단 파일 </body> 위에 코드를 복사하여 추가 합니다.	
+	
+	*/
+?>
+<style>
+	/* 그누보드 내용관리등 에디터로 입력할 경우  여기서부터 */
+	.daon_content_wrap{width:100%; min-width:320px; max-width:1200px; margin:0 auto;}
+	.daon_page_title{width:100%; margin-bottom:70px;}
+	.daon_page_title h1{width:100%; margin:0 auto; text-align:center; font-size:2.5em; font-weight:600;}
+	.daon_page_title h1:after {content:""; clear:both; display:block; width:30px; margin:10px auto; border:1px solid #000;}
+	.daon_page_title h2{width:100%; margin:0 auto; text-align:center; font-size:1.2em; color:#666; margin-top:20px; }
+
+
+	.history_type1 {width:100%; min-width:320px; max-width:1200px; margin:0 auto;}
+	.history_type1 .innerBox{position:relative; width:100%; }
+	.history_type1 .innerBox:after{content:'';display:block;clear:both;}
+	.history_type1 h3 {text-align:center; padding-bottom:20px; font-size:2em; font-weight:100; color:#aaa;}
+	.history_type1:first-child h3 { padding:0px 0 50px 0;}
+	.history_type1 .history { position:relative; margin-bottom:100px;}
+	.history_type1 .history:last-child{margin-bottom:0px;}
+	.history_type1 .history:before { content:''; display:block; position:absolute; top:0; left:50%; width:1px; height:100%; background:#eee;} /* 라인색상 */
+	.history_type1 .history .img_box {position:absolute; top:0; left:0; padding:0; margin:0; width:50%; text-align:left; }
+	.history_type1 .history .img_box img { width:auto;}
+
+	.history_type1 .history > div { position:relative; margin-left:50%; padding-left:90px; margin-bottom:45px; }
+	.history_type1 .history > div:before { content:''; display:block; position:absolute; top:10px; left:-2px; width:5px; height:5px; border-radius:50%; background:#555;} /* 라인포인트색상 */
+	.history_type1 .history > div .year { position:absolute; top:0; left:20px; font-size:1em; color:#555; padding:0 10px; margin-bottom:15px; display:inline-block; border:1px solid #ddd;}
+	.history_type1 .history > div ul {padding:0; margin:0; }
+	.history_type1 .history > div ul li { padding:0; margin:0;}
+	.history_type1 .history > div ul li p {margin-top:0px; }
+	.history_type1 .history > div ul li p strong { width:15%; display:inline-block; vertical-align:top; font-size:0.9em; text-align:center; }
+	.history_type1 .history > div ul li p span {width:85%; display:inline-block; font-size:0.9em;  }
+
+		
+	@media screen and (max-width: 992px) {
+
+		.daon_content_wrap{width:100%;}
+		.daon_page_title{margin-bottom:40px;}
+		.daon_page_title h1{font-size:2em;}
+		.daon_page_title h2{font-size:1em;}
+
+		.history_type1 .history .img_box { display:block; position:relative; top:0; left:0; width:100%; padding:0; margin-bottom:40px;}
+		.history_type1 .history .img_box img { width:100%;}
+		.history_type1 .history:before { left:20px; } /* 라인 */
+		.history_type1 .history > div { margin-left:0; }
+		.history_type1 .history > div:before {left:18px; }
+		.history_type1 .history > div .year { top:0px; left:40px; font-size:0.9em;}
+		.history_type1 .history > div ul li { font-size:0.9em;}
+
+	}
+
+	@media screen and (max-width: 480px) {
+	
+		.history_type1 .history > div {padding-left:40px;  }
+		.history_type1 .history > div .year { position:relative; left:0; }
+		.history_type1 .history > div ul li p strong { text-align:left; }
+
+	}
+	/*  여기까지 코드를 복사하여 공통 css파일 최하단에 추가합니다. */
+</style>
+
+
+<!-- /* 그누보드 내용관리등 에디터로 입력할 경우 여기서부터 */ -->
+<div class="daon_content_wrap">
+	<div class="daon_page_title">
+		<h1 class="sub_tit">HISTORY</h1>
+		<h2 class="sub_txt">새로운 미래를 열어가는 다온테마</h2>
+	</div>
+
+
+	<div class="history_type1">
+		<h3>2010~현재</h3>
+		<div class="history">
+			<p class="img_box"><img src="../image/history_img1.jpg" alt=""></p>
+			<div>
+				<div class="year">2019</div>
+				<ul>
+					<li>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<span class="year">2015</span>
+				<ul>
+					<li>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<div class="year">2012</div>
+				<ul>
+					<li><p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p></li>
+				</ul>
+			</div>
+		</div>
+		
+		<h3>2000~2009</h3>
+		<div class="history">
+			<p class="img_box"><img src="../image/history_img2.jpg" alt=""></p>
+			<div>
+				<div class="year">2009</div>
+				<ul>
+					<li>
+						<p><strong>02월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<div class="year">2012</div>
+				<ul>
+					<li>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>						
+					</li>
+				</ul>
+			</div>
+			<div>
+				<div class="year">2005</div>
+				<ul>
+					<li>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<div class="year">2001</div>
+				<ul>
+					<li>
+						<p><strong>02월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+		</div>
+
+		<h3>1990~1999</h3>
+		<div class="history">
+			<p class="img_box"><img src="../image/history_img1.jpg" alt=""></p>
+			<div>
+				<div class="year">1999</div>
+				<ul>
+					<li>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<span class="year">1997</span>
+				<ul>
+					<li>
+						<p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p>
+					</li>
+				</ul>
+			</div>
+			<div>
+				<div class="year">1995</div>
+				<ul>
+					<li><p><strong>01월</strong><span>이곳은 상세연혁 내용이 들어갈 자리입니다.</span></p></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /* 여기까지 에디터의 HTML 모드로 등록합니다. */ -->
+
+
+<?php
+	include "../include/tail.php"; 
+?>

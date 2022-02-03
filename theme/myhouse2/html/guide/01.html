@@ -1,0 +1,299 @@
+<?php
+	include "../include/header.php"; 
+?>
+
+<?php 
+	/*	
+		기본 css(11~15라인)
+		기본 css 는 적용하지 않습니다. 
+	*/ 
+?>
+<style>
+	body,td,h1,h2,h3,h4,h5,div,p,li,ul,ol,dd,dt,section,input,textarea,select,button{margin:0;padding:0; font-size:15px; color:#333; line-height:1.6em; font-family: 'Noto Sans KR', sans-serif; font-weight:400; letter-spacing:-0.02em;}
+	body{padding-top:50px; padding-bottom:50px;}
+	ul,ol,li{margin:0;padding:0;list-style:none;}	
+</style>
+
+
+<?php
+	/*
+		CSS파일 로드(25~27라인)
+		구매하신 다온테마에 사용하신다면 적용하지 않아도 됩니다.
+		다온테마가 아닌 다른 곳에 적용하신다면 26~27 라인은 공통 상단파일 </head> 위에 적용합니다.	
+	*/
+?>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Satisfy&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+
+
+
+<?php
+	/*
+		주의사항 
+		그누보드 관리자모드 내용관리등 에디터로 내용을 등록하실 경우, 보안문제로 자바스크립트와 css가 필터될 수 있습니다.
+		이럴 경우 공통 css 파일에 아래 style을 별도 추가하고, 내용관리 에디터의 HTML 모드로 태그를 넣으시면 됩니다.(에디터마다 HTML 모드 버튼이 있으니 HTML 모드로 넣어주세요.)
+		javascript 를 사용한다면 공통하단 파일 </body> 위에 코드를 복사하여 추가 합니다.	
+	
+	*/
+?>
+<style>
+	/* 그누보드 내용관리등 에디터로 입력할 경우  여기서부터 */
+	.fc_pointer {color:#3375C0; }
+	.daon_content_wrap{width:100%; min-width:320px; max-width:100%; margin:0 auto;}
+	.daon_page_title{width:100%; margin-bottom:60px;}
+	.daon_page_title h1{width:100%; margin:0 auto; text-align:center; font-size:2.5em; font-weight:600;}
+	.daon_page_title h1:after {content:""; clear:both; display:block; width:30px; margin:10px auto; border:1px solid #000;}
+	.daon_page_title h2{width:100%; margin:0 auto; text-align:center; font-size:1.2em; color:#666; margin-top:20px; }
+
+	.guide_type1 {width:100%; max-width:1200px; margin:0 auto; }
+	.guide_type1:after {clear:both; content:''; display:block;}
+	
+	.guide_type1 .guide_box1 .con_wrap {width:100%; background:;  padding:50px 0; border:1px solid #ddd; box-sizing:border-box; }
+	.guide_type1 .guide_box1 .con_wrap:after {clear:both; content:''; display:block;}
+	.guide_type1 .guide_box1 .con_wrap ul { padding:0; margin:0;}
+	.guide_type1 .guide_box1 .con_wrap ul li {float:left; width:33.33333%; text-align:center; padding:0; text-transform:uppercase; border-left:1px solid #eee; box-sizing:border-box;}
+	.guide_type1 .guide_box1 .con_wrap ul li:first-child{border-left:none;}
+	.guide_type1 .guide_box1 .con_wrap ul li .con_txt {min-height:220px; padding:0 20px; }
+	.guide_type1 .guide_box1 .con_wrap ul li .icon {display:block; width:100px; margin:0 auto; overflow:hidden;}
+	.guide_type1 .guide_box1 .con_wrap ul li .icon i {display:inline-block; font-size:3em; color:#2297d8;}
+	.guide_type1 .guide_box1 .con_wrap ul li h3.title {position:relative; font-size:1.4em;  padding-bottom:10px; margin:15px 0; color:#000;}
+	.guide_type1 .guide_box1 .con_wrap ul li h3.title:before {content:""; position:absolute; left:50%; bottom:0; margin-left:-20px; display:block; width:40px; height:1px; background:#bbb; }
+	.guide_type1 .guide_box1 .con_wrap ul li strong {font-size:1.8em; color:#dc3232; line-height:1.5em;}
+	.guide_type1 .guide_box1 .con_wrap ul li p {font-size:1em; color:#555; line-height:1.5em;}
+	.guide_type1 .guide_box1 .con_wrap ul li .btn1 { display:inline-block; height:40px; line-height:38px; padding:0 20px; background:#2297d8; color:#fff; font-size:1em; margin-top:20px; text-decoration:none; transition:0.3s;}
+	.guide_type1 .guide_box1 .con_wrap ul li .btn1:hover {background:#000; color:#fff; border:0;} 
+
+	.guide_type1 .guide_box2 { width:100%; max-width:1200px; margin:50px auto; border-top:1px solid #000;}
+	.guide_type1 .guide_box2:after {clear:both; content:''; display:block;}
+	.guide_type1 .guide_box2 .con_wrap { width:100%; padding:50px 0; border-bottom:1px solid #eee;}
+	.guide_type1 .guide_box2 .con_wrap:after {clear:both; content:''; display:block;}
+	.guide_type1 .guide_box2 .con_wrap .con_area {padding:0 20px;}
+	.guide_type1 .guide_box2 .con_wrap .left {width:30%; float:left; padding:0; }
+	.guide_type1 .guide_box2 .con_wrap .left .con_title {font-size:1.5em; font-weight:700; color:#000;}
+	.guide_type1 .guide_box2 .con_wrap .left .con_title em {display:block; font-size:13px; font-weight:400; text-transform:uppercase; font-style:normal; letter-spacing:0.05em; color:#c0c0c0; }
+	.guide_type1 .guide_box2 .con_wrap .right {width:70%; float:left; padding:0; }
+	.guide_type1 .guide_box2 .con_wrap .right ul li {position:relative; margin-bottom:20px; padding-left:30px; line-height:1.5em; word-break:keep-all;}
+	.guide_type1 .guide_box2 .con_wrap .right ul li:last-child {margin-bottom:0}
+	.guide_type1 .guide_box2 .con_wrap .right ul li .txt_depth {font-size:1em; color:#aaa; text-transform:uppercase; padding-top:5px;  }
+	.guide_type1 .guide_box2 .con_wrap .right ul li .numb { position:absolute; left:0; font-weight:700; }
+	.guide_type1 .guide_box2 .con_wrap table {width:100%; margin-top:20px; border-collapse:collapse;}
+	.guide_type1 .guide_box2 .con_wrap table tr {border-top:1px solid #e1e1e1}
+	.guide_type1 .guide_box2 .con_wrap table tr:last-child {border-bottom:1px solid #e1e1e1}
+	.guide_type1 .guide_box2 .con_wrap table tr th {background:#f9f9f9; padding:10px 0;}
+	.guide_type1 .guide_box2 .con_wrap table tr th:first-child {border-right:1px solid #e1e1e1}
+	.guide_type1 .guide_box2 .con_wrap table tr td {text-align:center; padding:10px 0}
+	.guide_type1 .guide_box2 .con_wrap table tr td:first-child {border-right:1px solid #e1e1e1}
+	.guide_type1 .guide_box2 .con_wrap .imp {font-size:0.95em; word-break:keep-all; color:#3375C0; margin-top:20px; background:#f1f7fb; padding:5px 25px; font-weight:500;}
+
+
+	@media screen and (max-width: 768px){
+		.daon_content_wrap{width:100%;}
+		.daon_page_title{margin-bottom:40px;}
+		.daon_page_title h1{font-size:2em;}
+		.daon_page_title h2{font-size:1em;}
+
+
+		.guide_type1 .guide_box1 .con_wrap {padding:0; }
+		.guide_type1 .guide_box1 .con_wrap ul li {width:100%;  padding:50px 0; border-left:0;  border-bottom:1px solid #ededed; }
+		.guide_type1 .guide_box1 .con_wrap ul li .con_txt {min-height:150px;}
+
+		.guide_type1 .guide_box2 .con_wrap .left {width:100%;}
+		.guide_type1 .guide_box2 .con_wrap .right {width:100%; margin-top:30px; }
+
+	}
+	/*  여기까지 코드를 복사하여 공통 css파일 최하단에 추가합니다. */
+</style>
+
+
+<!-- /* 그누보드 내용관리등 에디터로 입력할 경우 여기서부터 */ -->
+<div class="daon_content_wrap">
+	<div class="daon_page_title">
+		<h1 class="sub_tit"><span class="fc_pointer">DAONTHEME</span> GUIDE</h1>
+		<h2 class="sub_txt">새로운 미래를 열어가는 다온테마</h2>
+	</div>
+
+	
+	<div class="guide_type1">
+
+		<div class="guide_box1">
+			<div class="con_wrap">
+			<ul>
+				<li>
+					<div class="con_txt">
+						<div class="icon"><i class="far fa-clock"></i></div>
+						<h3 class="title">상담문의</h3>
+						<strong class="guide_tel">02-1234-5678</strong>
+						<p>
+							평일 : 09:30 ~ 18:00<br>
+							점심 : 12:00 ~ 13:00<br>
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="con_txt">
+						<div class="icon"><i class="far fa-calendar-alt"></i></div>
+						<h3 class="title">휴무일</h3>
+						<p>
+							매주 토요일, 일요일<br>
+							공휴일 휴무
+						</p>
+					</div>
+				</li>
+				<li>
+					<div class="con_txt">
+						<div class="icon"><i class="fas fa-pencil-alt"></i></div>
+						<h3 class="title">상담문의</h3>
+						<p>
+							궁금하신 내용을 남겨주시면<br>
+							신속하고 정확하게 답변드리겠습니다.
+						</p>
+						<a href="#none" class="btn1">온라인 문의하기</a>
+					</div>
+				</li>
+			</ul>
+			</div>
+		</div>
+
+
+		<div class="guide_box2">
+			<div class="con_wrap">
+				<div class="con_area">
+					<div class="left">
+						<h2 class="con_title">
+							테마문의
+							<em>Inquiry</em>
+						</h2>						
+					</div>
+					<div class="right">					
+					<ul>
+						<li>
+							<span class="numb">01.</span>
+							daontheme@daum.net
+							<p class="txt_depth">컨텐츠몰 > 컨텐츠상세보기 > 컨텐츠문의</p>
+						</li>
+					</ul>
+					<p class="imp">
+						평일 09:30 ~ 18:00   / 토요일.일요일.공휴일 휴무 휴일 등
+						업무시간이 아닌 경우 답변이 늦어질 수 있는 점 양해 부탁드립니다.
+					</p>
+					</div>
+				</div>
+			</div>
+
+			<div class="con_wrap">
+				<div class="con_area">
+					<div class="left">
+						<h2 class="con_title">
+							취소/교환/환불안내
+							<em>Cancellation/exchange/refund</em>
+						</h2>
+					</div>
+
+					<div class="right">
+					<ul>
+						<li>
+							<span class="numb">01.</span>
+							컨텐츠는 다운로드 하신 후에는 회수가 불가능한 상품입니다.						
+						</li>
+					</ul>
+					<p class="imp">
+						한번 다운로드 받으신 테마는 어떠한 경우라도
+						취소,환불,교환 되지 않으니 유의해 주시기 바랍니다.
+					</p>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="con_wrap">
+				<div class="con_area">
+					<div class="left">
+						<h2 class="con_title">
+							주의사항
+							<em>Notice</em>
+						</h2>
+					</div>
+					<div class="right">
+					<ul>
+						<li>
+							<span class="numb">01.</span>
+							그누보드 / HTML / CSS를 이해하고 수정가능하신 퍼블리싱 중급 사용자 이상에게 구매를 권장드립니다.<br>
+							HTML&CSS 초급이신 분은 세팅이 어려울 수 있습니다.	
+						</li>
+						<li>
+							<span class="numb">02.</span>
+							PHP버전은 최소 5.3x 이상 사용하셔야 합니다.
+						</li>
+						<li>
+							<span class="numb">03.</span>
+							테마 설치 및 사용법에 대한 지원을 100% 해드리고 있습니다.
+						</li>
+						<li>
+							<span class="numb">04.</span>
+							커스터마이징에 대한 직접적인 css수정, ftp를 통한 수정, html의 수정 등은 지원해 드리지 않으며,
+							이러한 부분은 유료수정이 가능하므로 별도 문의부탁드립니다.
+						</li>
+					</ul>
+					</div>
+				</div>
+			</div>
+
+
+			<div class="con_wrap">
+				<div class="con_area">
+					<div class="left">
+						<h2 class="con_title">
+							테마종류 및 금액
+							<em>Theme price</em>
+						</h2>
+					</div>
+					<div class="right">
+						<p><strong>무통장 입금 계좌 : </strong>농협 00-000-000 (예금주 : 홍길동)</p>
+						<table>
+							<colgroup>
+								<col width="50%">
+								<col width="50%">
+							</colgroup>
+							<tbody>
+								<tr>
+									<th>구분</th>
+									<th>금액</th>
+								</tr>
+								<tr>
+									<td>레이어형 빠른상담</td>
+									<td>22,000원</td>
+								</tr>
+								<tr>
+									<td>게시판 새글 SMS알림</td>
+									<td>22,000원</td>
+								</tr>
+								<tr>
+									<td>심플테마</td>
+									<td>55,000원</td>
+								</tr>
+								<tr>
+									<td>기업테마</td>
+									<td>77,000원</td>
+								</tr>
+								<tr>
+									<td>기업테마ver2</td>
+									<td>99,000원</td>
+								</tr>
+							</tbody>
+						</table>
+						<p class="imp">기타 궁금한 문의는 고객센터로 문의바랍니다.</p>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</div>
+<!-- /* 여기까지 에디터의 HTML 모드로 등록합니다. */ -->
+
+
+<?php
+	include "../include/tail.php"; 
+?>

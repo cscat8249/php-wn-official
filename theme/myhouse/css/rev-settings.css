@@ -1,0 +1,63 @@
+.big-heading{
+font-size: 40pt;
+line-height:normal;
+}
+.sub-heading{
+font-size: 30pt;
+line-height:normal;
+}
+.big-heading-droid{
+font-family: 'Droid Serif', serif;
+font-size: 40pt;
+font-weight:700;
+line-height:normal;
+}
+.sub-heading-droid{
+font-family: 'Droid Serif', serif;
+font-style:italic;
+font-size: 30pt;
+font-weight:400;
+line-height:normal;
+}
+.big-heading-monst{
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 40pt;
+font-weight:700;
+line-height:normal;
+}
+.sub-heading-monst{
+font-family: 'Noto Sans KR', sans-serif;
+font-size: 30pt;
+font-weight:400;
+line-height:normal;
+}
+.btn-slider { 
+display: inline-block;
+width: 198px;
+height: 40px;
+font-size:12pt;
+font-weight:400;
+letter-spacing:0pt;
+font-style:normal;
+text-align:center;
+line-height:38px;
+color:#060606;
+background:var(--main-color);
+outline: none;
+text-shadow:none;
+margin: 5px auto;
+margin-left:0px;
+padding: 0;
+cursor:pointer;
+-moz-transition: all 0.3s ease;
+-ms-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all 0.3s ease;
+}
+.btn-slider:hover { 
+ background:#fff;
+-moz-transition: all 0.3s ease;
+-ms-transition: all 0.3s ease;
+-o-transition: all 0.3s ease;
+transition: all 0.3s ease;}
+  .btn-slider a:hover { color: #060606; } 

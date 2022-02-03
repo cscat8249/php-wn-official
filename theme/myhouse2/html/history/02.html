@@ -1,0 +1,391 @@
+<?php
+	include "../include/header.php"; 
+
+	/*
+		
+		이 페이지는 jquery 로 작동됩니다.	
+	
+	*/
+
+?>
+
+<?php 
+	/*	
+		기본 css(11~15라인)
+		기본 css 는 적용하지 않습니다. 
+	*/ 
+?>
+<style>
+	body,td,h1,h2,h3,h4,h5,div,p,li,ul,ol,dd,dt,section,input,textarea,select,button{margin:0;padding:0; font-size:15px; color:#333; line-height:1.6em; font-family: 'Noto Sans KR', sans-serif; font-weight:400; letter-spacing:-0.02em;}
+	body{padding-top:50px; padding-bottom:50px;}
+	ul,ol,li{margin:0;padding:0;list-style:none;}	
+</style>
+
+
+<?php
+	/*
+		CSS파일 로드(26~28라인)
+		구매하신 다온테마에 사용하신다면 적용하지 않아도 됩니다.
+		다온테마가 아닌 다른 곳에 적용하신다면 27번 라인은 공통 상단파일 </head> 위에 적용합니다.	
+		jquery를 사용하지 않는 홈페이지라면 28번 라인은 공통 상단파일 </head> 위에 적용합니다.	
+	*/
+?>
+<link href="https://fonts.googleapis.com/css?family=Noto+Sans+KR:100,300,400,500,700,900&display=swap&subset=korean" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+<script src="http://code.jquery.com/jquery-latest.min.js" language="javascript"></script>
+
+
+
+<?php
+	/*
+		주의사항 
+		그누보드 관리자모드 내용관리등 에디터로 내용을 등록하실 경우, 보안문제로 자바스크립트와 css가 필터될 수 있습니다.
+		이럴 경우 공통 css 파일에 아래 style을 별도 추가하고, 내용관리 에디터의 HTML 모드로 태그를 넣으시면 됩니다.(에디터마다 HTML 모드 버튼이 있으니 HTML 모드로 넣어주세요.)
+		javascript 를 사용한다면 공통하단 파일 </body> 위에 코드를 복사하여 추가 합니다.	
+	
+	*/
+?>
+<style>
+	/* 그누보드 내용관리등 에디터로 입력할 경우  여기서부터 */
+	.daon_content_wrap{width:100%; min-width:320px; max-width:1200px; margin:0 auto;}
+	.daon_page_title{width:100%; margin-bottom:70px;}
+	.daon_page_title h1{width:100%; margin:0 auto; text-align:center; font-size:2.5em; font-weight:600;}
+	.daon_page_title h1:after {content:""; clear:both; display:block; width:30px; margin:10px auto; border:1px solid #000;}
+	.daon_page_title h2{width:100%; margin:0 auto; text-align:center; font-size:1.2em; color:#666; margin-top:20px; }
+
+
+	.history_tab{width:100%; text-align:center; margin-bottom:50px;}
+	.history_tab span{display:inline-block; width:200px; margin:0px 10px; border:1px solid #000; padding:10px 0; cursor:pointer;}
+	.history_tab span.on{border:1px solid #333; background-color:#333; color:#fff;}
+	.history_type2{display:none; width:100%;  min-width:320px; max-width:1200px; margin:0 auto; background:url('../image/history_line.gif')repeat-y center; overflow: hidden;}	
+	.history_type2 .title {margin:0 0 5%;}
+	.history_type2 .title h4{display:table; width:150px; height:150px; margin:0 auto; position: relative; text-align:center; font-size:1.5em; color:#fff;  }
+	.history_type2 .title h4 span{display:table-cell; vertical-align:middle;  width:100%; height:100%; background:#396fbc; border-radius:100%;  z-index:1; line-height:1em;}
+	.history_type2 .history_box{width:100%; overflow: hidden;}
+	.history_type2 .box_wrap.right{width:50%; background:url('../image/history_line2.gif')no-repeat left 56px;  position: relative;}
+	.history_type2 .box_wrap.right:before{content:url('../image/history_dot.gif'); position: absolute; top:45px; left: -10px;}
+	.history_type2 .box_wrap.left{width:50%; background:url('../image/history_line2.gif')no-repeat right 56px; position: relative;}
+	.history_type2 .box_wrap.left:before{content:url('../image/history_dot.gif'); position: absolute; top:45px; right: -10px;}
+	.history_type2 .box_wrap .box{ border:1px solid #ddd; background:#fff; padding:0px; margin-top:20px;}
+	.history_type2 .box_wrap .box img{width:100%; max-width:800px;}
+	.history_type2 .box_wrap .box p.year{padding-top:10px; padding-left:20px; font-size:1.5em; color:#333;}
+	.history_type2 .box_wrap .box ul{margin:0; padding:0;}
+	.history_type2 .box_wrap .box ul li{position: relative; margin:15px 0; padding-left:80px; line-height:1.6; font-size:1em; letter-spacing: -0.5px;}
+	.history_type2 .box_wrap .box ul li span{position: absolute; left:20px; top:0; padding-left:10px; color:#000;}
+	.history_type2 .box_wrap .box ul li span:before{content:""; position: absolute; left:0; top:10px; width:4px; height:4px; background:#1776ff;}
+	.history_type2 .box_wrap.right{float:right;}
+	.history_type2 .box_wrap.right .box{margin-left:10%;}
+	.history_type2 .box_wrap.left{float:left;}
+	.history_type2 .box_wrap.left .box{margin-right:10%;}
+
+
+	.history_view_1{display:block;}
+	.history_view_1 .title h4 span{background-color:#21418d;}
+	.history_view_1 .title h4 span{background-color:#2754ad;}
+		
+	@media screen and (max-width:992px){
+		
+		.history_type2 .box_wrap .box p.year{ padding-left:10px;}
+		.history_type2 .box_wrap .box ul li span{ left:10px;}
+		.history_type2 .box_wrap .box ul li{ padding-left:80px;}	
+
+		.daon_content_wrap{width:96%;}
+		.daon_page_title{margin-bottom:40px;}
+		.daon_page_title h1{font-size:2em;}
+		.daon_page_title h2{font-size:1em;}
+
+		.history_tab span{width:auto; padding:5 10px; margin:0 3px;}
+
+
+		.history_type2 .box_wrap .box p.year{ padding-left:10px;}
+		.history_type2 .box_wrap .box ul li span{ left:10px;}
+		.history_type2 .box_wrap .box ul li{padding-left:70px; padding-right:10px;}
+		.history_type2{ background-position:5% top;}
+		.history_type2 .title h4{width:100%; height:auto;}
+		.history_type2 .title h4 span{ border-radius:0;  padding:20px 0; background:url('../image/history_top.jpg')no-repeat; background-size:cover;}	
+		.history_type2 .box_wrap.right{width:95%; background-position:left 55px;}
+		.history_type2 .box_wrap.right .box{ width:85%; }
+		.history_type2 .box_wrap.left{float:right;}
+		.history_type2 .box_wrap.left{width:95%; background-position:left 90px;}
+		.history_type2 .box_wrap.left:before{left: -10px; top:80px;}
+		.history_type2 .box_wrap.left .box{margin:10% 0 10% 10%; width:85%; }
+	}
+	
+	@media screen and (max-width:480px){
+		.history_type2 .box_wrap .box ul li{font-size:0.9em;}
+	}
+	/*  여기까지 코드를 복사하여 공통 css파일 최하단에 추가합니다. */
+</style>
+
+
+<!-- /* 그누보드 내용관리등 에디터로 입력할 경우 여기서부터 */ -->
+<div class="daon_content_wrap">
+	<div class="daon_page_title">
+		<h1 class="sub_tit">HISTORY</h1>
+		<h2 class="sub_txt">새로운 미래를 열어가는 다온테마</h2>
+	</div>
+
+	<div class="history_tab">
+		<span class="on" rel="history_view_1">2000~현재</span> <?php /*	rel="history_view_1"	 에서 history_1은 이 버튼을 눌렀을 때 나타나야 할 class값 입니다.  */ ?>
+		<span rel="history_view_2">1990~2000</span>	<?php /*	rel="history_view_2"	 에서 history_2는 이 버튼을 눌렀을 때 나타나야 할 class값 입니다.  */ ?>
+		<span rel="history_view_3">1980~1990</span>	<?php /*	rel="history_view_3"	 에서 history_3은 이 버튼을 눌렀을 때 나타나야 할 class값 입니다.  */ ?>
+	</div>
+	<div class="history_type2 history_view_1 history_type_in"> 	<?php /*	history_view_1 위 탭 1번째 버튼의 rel 값으로 입력해야 합니다. */ ?>	
+		<div class="title">
+			<h4>
+				<span>2000<br>~<br>현재</span>
+			</h4>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap right">
+				<div class="box">
+				<img src="../image/history_img4.jpg" alt="">
+				<p class="year">2018</p>
+				<ul>
+					<li>
+						<span>12. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>11. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>01. 21</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="history_box">
+			<div class="box_wrap left">
+				<div class="box">
+				<p class="year">2016</p>
+				<ul>
+					<li>
+						<span>11. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>07. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>04. 14</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>		
+					<li>
+						<span>02. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap right">
+				<div class="box">
+				<p class="year">2014</p>
+				<ul>
+					<li>
+						<span>04. 24</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>01. 10</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap left">
+				<div class="box">
+				<img src="../image/history_img4.jpg" alt="">
+				<p class="year">2010</p>
+				<ul>
+					<li>
+						<span>11. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>07. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="history_type2 history_view_2 history_type_in" > 		<?php /*	history_view_2 위 탭 2번째 버튼의 rel 값으로 입력해야 합니다. */ ?>	
+		<div class="title">
+			<h4>
+				<span>1990<br>~<br>2000</span>
+			</h4>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap right">
+				<div class="box">
+				<p class="year">2018</p>
+				<ul>
+					<li>
+						<span>12. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>11. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>01. 21</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="history_box">
+			<div class="box_wrap left">
+				<div class="box">
+				<img src="../image/history_img4.jpg" alt="">
+				<p class="year">2016</p>
+				<ul>
+					<li>
+						<span>11. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>07. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>04. 14</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>		
+					<li>
+						<span>02. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap right">
+				<div class="box">
+				<p class="year">2014</p>
+				<ul>
+					<li>
+						<span>04. 24</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>01. 10</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap left">
+				<div class="box">
+				<p class="year">2010</p>
+				<ul>
+					<li>
+						<span>11. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>07. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="history_type2 history_view_3 history_type_in"> 		<?php /*	history_view_3 위 탭 3번째 버튼의 rel 값으로 입력해야 합니다. */ ?>	
+		<div class="title">
+			<h4>
+				<span>1980<br>~<br>1990</span>
+			</h4>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap right">
+				<div class="box">
+				<p class="year">2018</p>
+				<ul>
+					<li>
+						<span>12. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>11. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>01. 21</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>	
+		</div>
+		<div class="history_box">
+			<div class="box_wrap left">
+				<div class="box">
+				<img src="../image/history_img4.jpg" alt="">
+				<p class="year">2016</p>
+				<ul>
+					<li>
+						<span>11. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>07. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>04. 14</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>		
+					<li>
+						<span>02. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap right">
+				<div class="box">
+				<p class="year">2014</p>
+				<ul>
+					<li>
+						<span>04. 24</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>01. 10</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+		<div class="history_box">
+			<div class="box_wrap left">
+				<div class="box">
+				<p class="year">2010</p>
+				<ul>
+					<li>
+						<span>11. 01</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+					<li>
+						<span>07. 15</span>이곳은 상세연혁 내용이 들어갈 자리입니다.
+					</li>
+				</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- /* 여기까지 에디터의 HTML 모드로 등록합니다. */ -->
+
+
+<?php 
+/*	
+	공통하단 파일 </body> 위에 코드를 복사하여 추가 합니다.	
+	아래 스크립트를 수정하지 마세요.	
+*/
+?>
+<script>	
+	$('.history_tab span').click(function(){		
+		var tid= $(this).attr("rel");	
+		$("."+tid).removeClass('history_type_in');
+		$(".history_type_in").slideUp();
+		$("."+tid).slideDown();
+		$("."+tid).addClass('history_type_in');
+		$(".history_tab span").removeClass("on");
+		$(this).toggleClass('on');
+	});
+</script>
+
+<?php
+	include "../include/tail.php"; 
+?>
